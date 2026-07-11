@@ -13,8 +13,8 @@ i=st.file_uploader("Upload here",('jpg','png','jpeg'))
 prompt=st.text_input("Ask here: ")
 if st.button('submit') and prompt:
     img=Image.open(i)
-    p='you are act as a art analyst and art critic, if user is ask other than told out of that topic'
-    final_prompt = f"You are an AI art critic and art analyst.Answer ONLY about the art.Respond in {b} language."
+    p="You are an Art Analyst and Art Critic. Only answer questions related to art. If the user asks anything outside this topic, politely respond that you can only assist with art-related questions."
+    final_prompt = f"You are an AI Art Critic and Art Analyst. Answer only art-related questions. If a question is unrelated to art, politely say that you can only help with art analysis and criticism. Respond in {b} language."
     res=model.generate_content([prompt,img,final_prompt])
     st.write(res.text)
     c=gTTS(res.text)
